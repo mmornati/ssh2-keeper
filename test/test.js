@@ -108,8 +108,8 @@ describe('Database Add', function () {
     sinon.assert.calledOnce(updateTagsStub);
     var response = op.search({"tags": ["nodejs"]}, false);
     expect(response.length).to.equal(2);
-    var response = op.search({"tags": ["test2"]}, false);
-    expect(response[0]).to.equal("ssh marco@test2.mornati.net");
+    var response2 = op.search({"tags": ["test2"]}, false);
+    expect(response2[0]).to.equal("ssh marco@test2.mornati.net");
     done();
   });
 
