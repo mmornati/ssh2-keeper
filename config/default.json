@@ -1,0 +1,7 @@
+{
+  "db_path": "./db",
+  "server_collection": "servers",
+  "tag_collection": "tags",
+  "default_username": "mmornati",
+  "show_ssh_command": true
+}

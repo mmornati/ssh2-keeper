@@ -1,0 +1,32 @@
+{
+  "name": "ssh2-keeper",
+  "version": "1.0.0",
+  "description": "To store your SSH2 servers connection information allowing to connect to them quickly",
+  "repository": "https://github.com/mmornati/ssh2-keeper",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive",
+    "cover": "istanbul cover _mocha -- --recursive"
+  },
+  "bin": {
+    "sshkeeper": "./index.js"
+  },
+  "author": "Marco Mornati",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "config": "^1.21.0",
+    "copy-paste": "^1.3.0",
+    "diskdb": "^0.1.15",
+    "lodash": "^4.16.4",
+    "stdio": "^0.2.7"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "codeclimate-test-reporter": "^0.3.3",
+    "crypto": "0.0.3",
+    "istanbul": "^0.4.5",
+    "jshint": "^2.9.3",
+    "mocha-jshint": "^2.3.1",
+    "sinon": "^1.17.6"
+  }
+}
