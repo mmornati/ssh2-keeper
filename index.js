@@ -47,7 +47,7 @@ var data = {
   'admin_server': options.admin_server ? options.admin_server.toLowerCase() : "",
   'username': options.username ? options.username : config.default_username,
   'tags': tags
-}
+};
 
 if (options.verbose) {
   console.log(data);
