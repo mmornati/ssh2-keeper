@@ -113,6 +113,23 @@ describe('Database Add', function () {
     done();
   });
 
+  it('test with admin server', function (done) {
+
+    var testcase = {
+      'hostname': "test3.mornati.net",
+      'admin_server': "admin.mornati.net",
+      'tags': ["test3"],
+      'username': 'marco'
+    };
+
+    op.add(testcase, false);
+    sinon.assert.calledOnce(saveServerStub);
+    sinon.assert.calledOnce(saveTagsStub);
+    var response = op.search({"tags": ["test3"]}, false);
+    expect(response[0]).to.equal("ssh -tt marco@admin.mornati.net -tt marco@test3.mornati.net");
+    done();
+  });
+
   afterEach(function() {
     saveServerStub.restore();
     updateTagsStub.restore();
