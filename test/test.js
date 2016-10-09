@@ -127,7 +127,7 @@ describe('Database Add', function () {
     sinon.assert.calledOnce(saveServerStub);
     sinon.assert.calledOnce(saveTagsStub);
     var response = op.search({"tags": ["test3"]}, true);
-    expect(response[0]).to.equal("ssh -tt marco@admin.mornati.net -tt marco@test3.mornati.net");
+    expect(response[0]).to.equal("ssh -tt marco@admin.mornati.net ssh -tt marco@test3.mornati.net");
     done();
   });
 
