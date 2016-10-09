@@ -64,7 +64,7 @@ The following options are supported:
 ### Add a new server
 
 ```bash
-node index.js -o add -h server35.mornati.net -i 192.168.100.35 -t jenkins -t slave -t slave04 -t integration
+sk -o add -h server35.mornati.net -i 192.168.100.35 -t jenkins -t slave -t slave04 -t integration
 ```
 
 This will add a server (if the hostname it is not already present with the same hostname) with the provided parameters and tags.
@@ -74,14 +74,14 @@ This will add a server (if the hostname it is not already present with the same 
 With a line like the previous one we've seen, you can also update server parameters:
 
 ```bash
-node index.js -o add -h server35.mornati.net -i 192.168.100.39
+sk -o add -h server35.mornati.net -i 192.168.100.39
 ```
 
 In this way, for example, if the server was already present into database, you will update the IP address. All others information already present into database will be kept.
 In the same way you can add a new tag to the server
 
 ```bash
-node index.js -o add -h server35.mornati.net -t mypersonalserver
+sk -o add -h server35.mornati.net -t mypersonalserver
 ```
 
 will add a new tag to the server (if not already present).
