@@ -9,7 +9,7 @@
     "cover": "istanbul cover _mocha -- --recursive"
   },
   "bin": {
-    "sshkeeper": "./index.js"
+    "sk": "./index.js"
   },
   "author": "Marco Mornati",
   "license": "GPL-3.0",

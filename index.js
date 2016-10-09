@@ -39,13 +39,13 @@ if (!options.args && !options.operation) {
   process.exit(1);
 }
 
-var tags = _.concat([], options.tag);
+var tags = _.concat([], options.tag ? options.tag : []);
 
 var data = {
-  'hostname': options.hostname ? options.hostname.toLowerCase() : "",
-  'ip': options.ip ? options.ip : "",
-  'admin_server': options.admin_server ? options.admin_server.toLowerCase() : "",
-  'username': options.username ? options.username : config.default_username,
+  'hostname': options.hostname ? options.hostname.toLowerCase() : undefined,
+  'ip': options.ip ? options.ip : undefined,
+  'admin_server': options.admin_server ? options.admin_server.toLowerCase() : undefined,
+  'username': options.username ? options.username : undefined, //config.default_username,
   'tags': tags
 };
 

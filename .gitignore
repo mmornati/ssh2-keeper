@@ -38,3 +38,5 @@ jspm_packages
 
 initialize_db.sh
 db_cube
+db/*
+.DS_store
