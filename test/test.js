@@ -11,10 +11,6 @@ const TEST_DB = path.join(__dirname, "db");
 describe('Database Search', function () {
   before(function () {
     config.db_path = TEST_DB;
-    config.server_collection = "servers";
-    config.tag_collection = "tags";
-    console.log(config);
-    op.database = db.connect(config.db_path, [config.server_collection, config.tag_collection]);
   });
 
   it('should return 12 prod servers', function (done) {
