@@ -4,12 +4,14 @@ var config = require('config');
 var sinon = require('sinon');
 var db = require('diskdb');
 var op = require('../lib/operations');
+var path = require('path');
 
-const TEST_DB = "./test/db";
+const TEST_DB = path.join(__dirname, "db");
 
 describe('Database Search', function () {
   before(function () {
     config.db_path = TEST_DB;
+    op.database = db.connect(config.db_path, [config.server_collection, config.tag_collection]);
   });
 
   it('should return 12 prod servers', function (done) {

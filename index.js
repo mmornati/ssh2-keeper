@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var path = require('path');
 //Overriding configuration folder to be always the fullpath of the scripts
-process.env['NODE_CONFIG_DIR'] = path.join(__dirname, 'config');
+process.env.NODE_CONFIG_DIR = path.join(__dirname, 'config');
 var config = require('config');
 
 var stdio = require('stdio');
