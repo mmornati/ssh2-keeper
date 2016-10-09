@@ -49,6 +49,14 @@ describe('Database Search', function () {
     done();
   });
 
+  it('test override with default username', function (done) {
+    config.force_default_username = true;
+    var result = op.search({"tags":["jenkins", "slave01"]}, true);
+    expect(result.length).to.equal(1);
+    expect(result[0]).to.equal("ssh marco@server32.mornati.net");
+    done();
+  });
+
   after(function () {
 
   });
@@ -91,7 +99,7 @@ describe('Database Add', function () {
     sinon.assert.calledOnce(saveTagsStub);
     var response = op.search({"tags": ["server2"]}, true);
     expect(response.length).to.equal(1);
-    expect(response[0]).to.equal("ssh mmornati@test1.mornati.net");
+    expect(response[0]).to.equal("ssh marco@test1.mornati.net");
     done();
   });
 
