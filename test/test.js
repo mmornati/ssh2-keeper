@@ -13,41 +13,42 @@ describe('Database Search', function () {
     config.db_path = TEST_DB;
     config.server_collection = "servers";
     config.tag_collection = "tags";
+    console.log(config);
     op.database = db.connect(config.db_path, [config.server_collection, config.tag_collection]);
   });
 
   it('should return 12 prod servers', function (done) {
-    var result = op.search({"tags":["prod"]}, false);
+    var result = op.search({"tags":["prod"]}, true);
     expect(result.length).to.equal(12);
     done();
   });
 
   it('should return 6 prod servers italy', function (done) {
-    var result = op.search({"tags":["prod", "italy"]}, false);
+    var result = op.search({"tags":["prod", "italy"]}, true);
     expect(result.length).to.equal(6);
     done();
   });
 
   it('should return 2 front prod servers italy', function (done) {
-    var result = op.search({"tags":["prod", "italy", "front"]}, false);
+    var result = op.search({"tags":["prod", "italy", "front"]}, true);
     expect(result.length).to.equal(2);
     done();
   });
 
   it('should return 1 front01 prod servers italy', function (done) {
-    var result = op.search({"tags":["prod", "italy", "front01"]}, false);
+    var result = op.search({"tags":["prod", "italy", "front01"]}, true);
     expect(result.length).to.equal(1);
     done();
   });
 
   it('should return 5 mongo01', function (done) {
-    var result = op.search({"tags":["mongo01"]}, false);
+    var result = op.search({"tags":["mongo01"]}, true);
     expect(result.length).to.equal(5);
     done();
   });
 
   it('should return 6 jenkins slave', function (done) {
-    var result = op.search({"tags":["jenkins", "slave"]}, false);
+    var result = op.search({"tags":["jenkins", "slave"]}, true);
     expect(result.length).to.equal(6);
     done();
   });
@@ -75,7 +76,7 @@ describe('Database Add', function () {
     op.add({
       'hostname': "test1.mornati.net",
       'tags': ["server1", "nodejs"]
-    }, false);
+    }, true);
     sinon.assert.calledOnce(saveServerStub);
     sinon.assert.calledTwice(saveTagsStub);
     done();
@@ -88,11 +89,11 @@ describe('Database Add', function () {
       'tags': ["server2", "nodejs"]
     };
 
-    op.add(testcase, false);
+    op.add(testcase, true);
     sinon.assert.callCount(saveServerStub, 0);
     sinon.assert.calledOnce(updateTagsStub);
     sinon.assert.calledOnce(saveTagsStub);
-    var response = op.search({"tags": ["server2"]}, false);
+    var response = op.search({"tags": ["server2"]}, true);
     expect(response.length).to.equal(1);
     expect(response[0]).to.equal("ssh mmornati@test1.mornati.net");
     done();
@@ -106,13 +107,13 @@ describe('Database Add', function () {
       'username': 'marco'
     };
 
-    op.add(testcase, false);
+    op.add(testcase, true);
     sinon.assert.calledOnce(saveServerStub);
     sinon.assert.calledOnce(saveTagsStub);
     sinon.assert.calledOnce(updateTagsStub);
-    var response = op.search({"tags": ["nodejs"]}, false);
+    var response = op.search({"tags": ["nodejs"]}, true);
     expect(response.length).to.equal(2);
-    var response2 = op.search({"tags": ["test2"]}, false);
+    var response2 = op.search({"tags": ["test2"]}, true);
     expect(response2[0]).to.equal("ssh marco@test2.mornati.net");
     done();
   });
@@ -126,10 +127,10 @@ describe('Database Add', function () {
       'username': 'marco'
     };
 
-    op.add(testcase, false);
+    op.add(testcase, true);
     sinon.assert.calledOnce(saveServerStub);
     sinon.assert.calledOnce(saveTagsStub);
-    var response = op.search({"tags": ["test3"]}, false);
+    var response = op.search({"tags": ["test3"]}, true);
     expect(response[0]).to.equal("ssh -tt marco@admin.mornati.net -tt marco@test3.mornati.net");
     done();
   });
