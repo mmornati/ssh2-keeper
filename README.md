@@ -151,7 +151,7 @@ If you are using an admin server between you PC and the target server (for examp
 ```bash
 sk search preprod france front02
 Successfully connected to : ./db
-ssh -tt mmornati@adm01.mornati.net -tt mmornati@server20.mornati.net
+ssh -tt mmornati@adm01.mornati.net ssh -tt mmornati@server20.mornati.net
 Added to clipboard
 ```
 
