@@ -60,7 +60,7 @@ describe('Database Search', function () {
 
 describe('Database Add', function () {
   before(function () {
-    config.db_path = TEST_DB;
+    //config.db_path = TEST_DB;
     config.server_collection = "servers_test";
     config.tag_collection = "tags_test";
     op.database = db.connect(config.db_path, [config.server_collection, config.tag_collection]);
