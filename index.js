@@ -3,6 +3,7 @@ var path = require('path');
 //Overriding configuration folder to be always the fullpath of the scripts
 process.env.NODE_CONFIG_DIR = path.join(__dirname, 'config');
 var config = require('config');
+var utils = require('./lib/utils');
 
 var stdio = require('stdio');
 var op = require('./lib/operations');
@@ -15,8 +16,9 @@ var options = stdio.getopt({
    'hostname': {key: 'h', args: 1, description: 'Hostname of your server'},
    'admin_server': {key: 'a', args: 1, description: 'If you need to connect to an Admin server to reach your target. Ex: ssh -tt pi@192.168.0.101 ssh -tt pi2@192.168.0.102'},
    'ip': {key: 'i', args: 1, description: 'Server IP address.'},
+   'identity_file': {key: 'f', args: 1, description: 'Identity File'},
    'username': {key: 'u', args:1, description: 'Username to connect to your server. If empty the one in configuration file be used'},
-   'operation': {key: 'o', args: 1, description: 'One of ADD, SEARCH or DELETE'}
+   'operation': {key: 'o', args: 1, description: 'One of ADD, SEARCH, UPDATE or DELETE'}
 });
 
 //The simplify the everyday usage:
@@ -38,19 +40,12 @@ if (options.args && options.args.length > 0) {
 }
 
 if (!options.args && !options.operation) {
-  console.log("Operation needed to execute this command. Try using --help");
-  process.exit(1);
+  throw new Error("Operation needed to execute this command. Try using --help");
 }
 
 var tags = _.concat([], options.tag ? options.tag : []);
 
-var data = {
-  'hostname': options.hostname ? options.hostname.toLowerCase() : undefined,
-  'ip': options.ip ? options.ip : undefined,
-  'admin_server': options.admin_server ? options.admin_server.toLowerCase() : undefined,
-  'username': options.username ? options.username : undefined, //config.default_username,
-  'tags': tags
-};
+var data = utils.createDataObject(options, {'tags': tags});
 
 if (options.verbose) {
   console.log(data);
@@ -62,15 +57,22 @@ switch (operation) {
   case (operation.match(/^ADD/) || {}).input:
     op.add(data, options.verbose);
     break;
+  case (operation.match(/^UPDATE/) || {}).input:
+    op.update(data, options.verbose);
+    break;
   case (operation.match(/^SEARCH/) || {}).input:
     var result = op.search(data, options.verbose);
-    for (var i=0; i<result.length; i++) {
-      console.log(result[i]);
-    }
-    if (result.length === 1) {
-      ncp.copy(result[0], function () {
-        console.log("Added to clipboard");
-      });
+    if (Array.isArray(result)) {
+      for (var i=0; i<result.length; i++) {
+        console.log(result[i]);
+      }
+      if (result.length === 1) {
+        ncp.copy(result[0], function () {
+          console.log("Added to clipboard");
+        });
+      }
+    } else {
+      console.log(result);
     }
     break;
   default:

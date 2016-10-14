@@ -58,7 +58,7 @@ The following options are supported:
   -a, --admin_server <ARG1> 	If you need to connect to an Admin server to reach your target. Ex: ssh -tt pi@192.168.0.101 ssh -tt pi2@192.168.0.102
   -i, --ip <ARG1>           	Server IP address.
   -u, --username <ARG1>     	Username to connect to your server. If empty the one in configuration file be used
-  -o, --operation <ARG1>    	One of ADD, SEARCH or DELETE
+  -o, --operation <ARG1>    	One of ADD, SEARCH, UPDATE or DELETE
 ```
 
 ### Add a new server
@@ -69,7 +69,7 @@ sk -o add -h server35.mornati.net -i 192.168.100.35 -t jenkins -t slave -t slave
 
 This will add a server (if the hostname it is not already present with the same hostname) with the provided parameters and tags.
 
-### Update
+### Update using add
 
 With a line like the previous one we've seen, you can also update server parameters:
 
@@ -87,6 +87,24 @@ sk -o add -h server35.mornati.net -t mypersonalserver
 will add a new tag to the server (if not already present).
 
 ![Update Tags](https://res.cloudinary.com/blog-mornati-net/image/upload/v1476013245/update_tags_hsot6u.gif)
+
+### Update
+
+Using the **Update** operation you can update a single server, using the hostname, or update all the servers related to a tag.
+
+```bash
+~ sk -o update -h server20.mornati.net -u marco -f ~/.ssh/test_rsa
+```
+
+Using a tag, like in the followind example:
+
+```bash
+~ sk -o update -t www -u mmornati -f ~/.ssh/test2_rsa
+```
+
+It will search foll all the servers tagged with *www* and set to anyone **mmornati** as username and **~/.ssh/test2_rsa** as identity file.
+
+This command will update the *server20.mornati.net* putting **marco** as username and **~/.ssh/test_rsa** as identity file
 
 ### Search
 
@@ -157,6 +175,4 @@ Added to clipboard
 
 ## Next Steps
 
-* Better management of Users (per server and tag)
-* Add support to ssh_key per server and tags
 * What you need to improve it :)
