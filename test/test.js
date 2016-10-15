@@ -308,6 +308,10 @@ describe('Database Remove', function () {
     sinon.assert.calledOnce(removeTagsStub);
     sinon.assert.calledTwice(updateServerStub);
     sinon.assert.callCount(removeServerStub, 0);
+    var response = op.search({"hostname": "test2.mornati.net"}, true);
+    expect(response.tags.length).to.equal(1);
+    var response2 = op.search({"hostname": "test1.mornati.net"}, true);
+    expect(response2.tags.length).to.equal(1);
     done();
   });
 

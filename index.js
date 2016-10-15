@@ -18,7 +18,7 @@ var options = stdio.getopt({
    'ip': {key: 'i', args: 1, description: 'Server IP address.'},
    'identity_file': {key: 'f', args: 1, description: 'Identity File'},
    'username': {key: 'u', args:1, description: 'Username to connect to your server. If empty the one in configuration file be used'},
-   'operation': {key: 'o', args: 1, description: 'One of ADD, SEARCH, UPDATE or DELETE'}
+   'operation': {key: 'o', args: 1, description: 'One of ADD, SEARCH, UPDATE or REMOVE'}
 });
 
 //The simplify the everyday usage:
@@ -59,6 +59,9 @@ switch (operation) {
     break;
   case (operation.match(/^UPDATE/) || {}).input:
     op.update(data, options.verbose);
+    break;
+  case (operation.match(/^REMOVE/) || {}).input:
+    op.remove(data, options.verbose);
     break;
   case (operation.match(/^SEARCH/) || {}).input:
     var result = op.search(data, options.verbose);
