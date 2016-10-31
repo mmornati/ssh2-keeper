@@ -52,13 +52,14 @@ If you globally installed the module, using `sk --help` allow you to retrieve th
 Successfully connected to : ./db
 USAGE: node sk [OPTION1] [OPTION2]... arg1 arg2...
 The following options are supported:
-  -v, --verbose <ARG1>      	Show verbose log
-  -t, --tag <ARG1>          	Tag(s) to allow you to find server (multiple)
-  -h, --hostname <ARG1>     	Hostname of your server
-  -a, --admin_server <ARG1> 	If you need to connect to an Admin server to reach your target. Ex: ssh -tt pi@192.168.0.101 ssh -tt pi2@192.168.0.102
-  -i, --ip <ARG1>           	Server IP address.
-  -u, --username <ARG1>     	Username to connect to your server. If empty the one in configuration file be used
-  -o, --operation <ARG1>    	One of ADD, SEARCH, UPDATE or DELETE
+  -v, --verbose <ARG1>       	Show verbose log
+  -t, --tag <ARG1>           	Tag(s) to allow you to find server (multiple)
+  -h, --hostname <ARG1>      	Hostname of your server
+  -a, --admin_server <ARG1>  	If you need to connect to an Admin server to reach your target. Ex: ssh -tt pi@192.168.0.101 ssh -tt pi2@192.168.0.102
+  -i, --ip <ARG1>            	Server IP address.
+  -f, --identity_file <ARG1> 	Identity File
+  -u, --username <ARG1>      	Username to connect to your server. If empty the one in configuration file be used
+  -o, --operation <ARG1>     	One of ADD, SEARCH, UPDATE or REMOVE
 ```
 
 ### Add a new server
