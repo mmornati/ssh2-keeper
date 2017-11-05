@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/mmornati/ssh2-keeper.svg?branch=master)](https://travis-ci.org/mmornati/ssh2-keeper) [![Code Climate](https://codeclimate.com/github/mmornati/ssh2-keeper/badges/gpa.svg)](https://codeclimate.com/github/mmornati/ssh2-keeper) [![Test Coverage](https://codeclimate.com/github/mmornati/ssh2-keeper/badges/coverage.svg)](https://codeclimate.com/github/mmornati/ssh2-keeper/coverage) [![Issue Count](https://codeclimate.com/github/mmornati/ssh2-keeper/badges/issue_count.svg)](https://codeclimate.com/github/mmornati/ssh2-keeper)
 
 # ssh2-keeper
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/mmornati/ssh2-keeper.svg)](https://greenkeeper.io/)
 Store servers with tags, simple search to use as SSH2 connections
 
 ## Why this project?
