@@ -4,6 +4,7 @@ addons:
         repo_token: 62b74b9f426f9a51919f010b1297c76150d97f1b4a0f5dcbefeb5c644b25c963
 node_js:
   - "8"
+  - "10"
 
 install:
   - npm install
