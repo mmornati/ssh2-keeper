@@ -3,6 +3,7 @@
 # ssh2-keeper
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/mmornati/ssh2-keeper.svg)](https://greenkeeper.io/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmmornati%2Fssh2-keeper.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmmornati%2Fssh2-keeper?ref=badge_shield)
 Store servers with tags, simple search to use as SSH2 connections
 
 ## Why this project?
@@ -179,3 +180,7 @@ Added to clipboard
 ## Next Steps
 
 * What you need to improve it :)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmmornati%2Fssh2-keeper.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmmornati%2Fssh2-keeper?ref=badge_large)
