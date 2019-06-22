@@ -11,7 +11,13 @@ install:
 
 before_script:
   - npm install -g mocha
+	- "curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | sudo bash"
+
+script: 
+  - fossa init
+  - fossa analyze
 
 after_success:
   - npm run cover
   - codeclimate-test-reporter < coverage/lcov.info
+  - fossa test
