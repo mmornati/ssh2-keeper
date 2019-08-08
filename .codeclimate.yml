@@ -23,6 +23,7 @@ ratings:
   - "**.rb"
 exclude_paths:
 - config/
+- test/
 ---
 engines:
   duplication:
