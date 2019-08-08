@@ -2,7 +2,7 @@
 var path = require('path');
 //Overriding configuration folder to be always the fullpath of the scripts
 process.env.NODE_CONFIG_DIR = path.join(__dirname, 'config');
-var config = require('./config');
+var config = require('./config/default');
 var utils = require('./lib/utils');
 
 var stdio = require('stdio');
