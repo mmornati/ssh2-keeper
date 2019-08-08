@@ -11,7 +11,39 @@ Using an OSx (or Linux) environment, when you need to manage lot of servers it c
 On the Windows system I used to use mRemote, but I didn't find anything similar on OSx/Linux.
 That's the idea to create a simple CLI program allowing to store all the connection information using tags (like mRemote does).
 
-## How to install the project
+## How to install the lib
+
+### Install using NPM package
+To install you can simply using the latest version of the package deployed on the npmjs.org repository. For this simply use the following command:
+
+```bash
+npm install -g ssh2-keeper
+```
+
+You will see the following output:
+
+```bash
+/Users/Marco/.nvm/versions/node/v11.14.0/bin/sk -> /Users/Marco/.nvm/versions/node/v11.14.0/lib/node_modules/ssh2-keeper/index.js
++ ssh2-keeper@1.2.2
+updated 1 package in 20.563s
+```
+
+#### Configuration
+Using the folder in the output of the installation output, you can configure with the desired parameters. The file is inside the `config` folder. In my example it is `/Users/Marco/.nvm/versions/node/v11.14.0/lib/node_modules/ssh2-keeper/config/default.json`
+
+```json
+{
+  "db_path": "/Users/mmornati/ssh2-keeper",
+  "server_collection": "servers",
+  "tag_collection": "tags",
+  "default_username": "mmornati",
+  "show_ssh_command": true
+}
+```
+
+You just need to select the `db_path` part with the information you need.
+
+### Install using the sources
 It's a NodeJS project and actually it is not available on the npm repository. So, the better way is downloading sources from github and install globally from sources:
 
 ```bash
@@ -23,7 +55,7 @@ npm install -g .
 
 The ssh2-keeper is now available as `sk` command on your system.
 
-## Configuration
+#### Configuration
 
 After the global installation the configuration folder is into the global node modules installation folder.
 You can check which one is on your system using:
