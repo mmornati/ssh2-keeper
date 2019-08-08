@@ -1,7 +1,7 @@
 language: node_js
 addons:
   code_climate:
-      repo_token: 62b74b9f426f9a51919f010b1297c76150d97f1b4a0f5dcbefeb5c644b25c963
+      repo_token: $CODE_CLIMATE_TOKEN
 node_js:
   - "8"
   - "10"
@@ -17,4 +17,11 @@ before_script:
 after_success:
   - npm run cover
   - codeclimate-test-reporter < coverage/lcov.info
-  - fossa test
+
+deploy:
+  provider: npm
+  email: "$NPM_EMAIL"
+  api_key: "$NPM_TOKEN"
+  on:
+    branch: master
+    tags: true
